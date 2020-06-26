@@ -1,0 +1,90 @@
+<div class="contacto">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-4">
+                <h3>Contacto</h3>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <h5>Formulario</h5>
+                <hr>
+                <form novalidate [formGroup]="formulario" (ngSubmit)="recogerDatos()">
+                    <div class="form-row">
+                        <div class="form-group col-12 col-md-6">
+                            <label>Nombre</label>
+                            <input type="text" name="nombre" class="form-control" formControlName="nombre">
+                            <p class="error"
+                                *ngIf="formulario.controls.nombre.errors?.required && formulario.controls.nombre.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-12 col-md-6">
+                            <label>Apellidos</label>
+                            <input type="text" name="apellidos" class="form-control" formControlName="apellidos">
+                            <p class="error"
+                                *ngIf="formulario.controls.apellidos.errors?.required && formulario.controls.apellidos.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                    </div>
+                    <div class="form-row ">
+                        <div class="form-group col-12 col-md-6">
+                            <label>Email</label>
+                            <input type="text" name="email" class="form-control" formControlName="email">
+                            <p class="error"
+                                *ngIf="formulario.controls.email.errors?.required && formulario.controls.email.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-12 col-md-10">
+                            <label>Mensaje</label>
+                            <textarea class="form-control" rows="3" name="mensaje" formControlName="mensaje"></textarea>
+                            <p class="error"
+                                *ngIf="formulario.controls.mensaje.errors?.required && formulario.controls.mensaje.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="checkbox" formControlName="checkbox">
+                            <label class="form-check-label">
+                                Acepto los terminos y condiciones
+                            </label>
+                        </div>
+                    </div>
+                    <input [disabled]="!formulario.valid" type="submit" class="btn btn-secondary" value="Enviar">
+                </form>
+            </div>
+
+
+            <div class="col-12 col-md-4">
+                <h5>Localizacion</h5>
+                <hr>
+                <p class="mt-3">Castelldefels</p>
+                <P>Barcelona</P>
+                <p>España</p>
+
+
+
+            </div>
+        </div>
+    </div>
+    <footer class="text-muted mt-3 navbar-dark bg-dark footer">
+        <div class=" container">
+            <p class="float-right mt-3">
+                <a href="#">Volver al principio</a>
+            </p>
+            <div id="footer-bottom">
+                ©&nbsp;2020&nbsp;<a href="/" rel="nofollow">TinTravel</a>, todos los
+                derechos reservados. <br>
+                <a href="/html_172-agencias_de_viaje.aspx">Agencias de Viaje</a> - <a
+                    href="/html_50-terminos_y_condiciones.aspx">Terminos y Condiciones</a> - <a
+                    href="/html_49-politica_de_privacidad.aspx">Política de Privacidad</a> |
+                <div id="scroll-top-top"><a href="#"></a></div>
+            </div>
+        </div>
+    </footer>

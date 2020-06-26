@@ -1,0 +1,40 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="!isLogged && router.url != '/login' ">
+        <a class="navbar-brand" href="#">TinTravel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a [routerLink]="['/home']" routerLinkActive="activo" class="nav-link">Inicio</a>
+                <li class="nav-item">
+                    <a [routerLink]="['/posts']" routerLinkActive="activo" class="nav-link">Viajes</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/contacto']" routerLinkActive="activo" class="nav-link">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/registro']" routerLinkActive="activo" class="nav-link">Registro</a>
+                </li>
+            </ul>
+            <ul class=" navbar-nav form-inline my-2 my-lg-0">
+                <li class="nav-item form-inline my-2 my-lg-0">
+                    <a class="nav-link" [routerLink]="['/perfil']" routerLinkActive="activo">Mi perfil</a>
+                </li>
+            </ul>
+
+            <ul class=" navbar-nav form-inline my-2 my-lg-0">
+                <li class="nav-item form-inline my-2 my-lg-0">
+                    <a class="nav-link" [routerLink]="['/login']" routerLinkActive="activo" (click)="onLogout()">Log
+                        Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+<router-outlet></router-outlet>

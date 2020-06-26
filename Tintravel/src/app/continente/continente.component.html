@@ -1,0 +1,233 @@
+<div class="row continentes">
+    <nav aria-label="breadcrumb" class="col-12">
+        <ul class="breadcrumb submenu">
+            <li class="breadcrumb-item" [routerLink]="['/posts', 'Europa']"><a>Europa</a></li>
+            <li class="breadcrumb-item" [routerLink]="['/posts', 'Asia']"><a>Asia</a></li>
+            <li class="breadcrumb-item" [routerLink]="['/posts', 'Africa']"><a>África</a></li>
+            <li class="breadcrumb-item" [routerLink]="['/posts', 'America_del_Norte']"><a>América del Norte</a></li>
+            <li class="breadcrumb-item" [routerLink]="['/posts', 'America_del_Sur']"><a>América del Sur</a></li>
+            <li class="breadcrumb-item" [routerLink]="['/posts', 'Oceania']"><a>Oceanía</a></li>
+
+        </ul>
+    </nav>
+</div>
+
+<div class="container-fluid gedf-wrapper">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="profile-work">
+                        <p>Enlaces de Interes</p>
+                        <a href="www.booking.com">Booking</a><br />
+                        <a href="">Expedia</a><br />
+                        <a href="">Airbnb</a><br />
+                        <a href="">SkyScanner</a><br />
+                        <a href="">eDreams</a><br />
+                        <a href="">Trivago</a><br />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 gedf-main">
+
+            <!--- Input escribir-->
+            <form novalidate [formGroup]="formulario" (ngSubmit)="recogerDatos()">
+                <div class="card gedf-card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+
+                                <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab"
+                                    aria-controls="posts" aria-selected="true">Escribe tu Publicacion</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="posts" role="tabpanel"
+                                aria-labelledby="posts-tab">
+                                <div class="form-group">
+                                    <label>Titulo</label>
+                                    <input type="text" name="titulo" class="form-control" formControlName="titulo">
+                                </div>
+                                <p class="error"
+                                    *ngIf="formulario.controls.titulo.errors?.required && formulario.controls.titulo.touched">
+                                    El
+                                    campo no puede estar vacio</p>
+                                <p class="error"
+                                    *ngIf="formulario.controls.titulo.errors?.minlength && formulario.controls.titulo.touched">
+                                    El
+                                    campo tiene que tener al menos 3 caracteres</p>
+                                <div class="form-group">
+                                    <label class="sr-only" for="message">post</label>
+                                    <textarea class="form-control" id="message" rows="3"
+                                        placeholder="Escribe una publicación" name="mensaje" class="form-control"
+                                        formControlName="mensaje"></textarea>
+                                    <p class="error"
+                                        *ngIf="formulario.controls.mensaje.errors?.required && formulario.controls.mensaje.touched">
+                                        El
+                                        campo no puede estar vacio</p>
+                                    <p class="error"
+                                        *ngIf="formulario.controls.mensaje.errors?.minlength && formulario.controls.mensaje.touched">
+                                        El
+                                        campo tiene que tener al menos 3 caracteres</p>
+
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="customFile">
+                                        <label class="custom-file-label" for="customFile">Sube una imagen</label>
+                                    </div>
+                                </div>
+                                <div class="py-4"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="continente" formControlName="continente">
+                                <option>Europa</option>
+                                <option>Asia</option>
+                                <option>África</option>
+                                <option>América_del_Norte</option>
+                                <option>América_del_Sur</option>
+                                <option>Oceanía</option>
+                            </select>
+                        </div>
+                        <div class="btn-toolbar justify-content-between">
+                            <div class="btn-group">
+                                <input [disabled]="!formulario.valid" type="submit" class="btn btn-secondary"
+                                    value="Enviar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <!--- \\\\\\\Post pintados -->
+
+            <div class="card gedf-card" *ngFor="let post of arrPost, index as i">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-2">
+                                <img [src]="'http://localhost:9000/'+ post.foto_perfil" width="60px" height="60px"
+                                    class="perfil-continente">
+                                <!--[src]="post?.foto_perfil" -->
+                            </div>
+                            <div class="ml-2">
+                                <div class="h5 m-0"><button type="button" class="btn btn-light" data-toggle="modal"
+                                        [attr.data-target]="'#modal'+ i">
+                                        {{post?.username}}</button></div>
+                                <!--Modal-->
+                                <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true" id="modal{{i}}">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <div>
+                                                    <img [src]="'http://localhost:9000/'+ post.foto_perfil" width="60px"
+                                                        height="60px" class="perfil-continente">
+                                                </div>
+                                                <h5 class="modal-title ml-3" id="exampleModalLabel">
+                                                    <strong>{{post?.username}}</strong></h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <strong>Paises Visitados:</strong> {{post?.paises_visitados}}
+                                                <hr>
+                                                <strong>Próximos Viajes:</strong> {{post?.proximos_viajes}}
+                                                <hr>
+                                                <strong>Idiomas:</strong> {{post?.idiomas}}
+                                                <hr>
+                                                <strong>Deportes que Practico:</strong> {{post?.deportes_practico}}
+                                                <hr>
+                                                <strong>Deportes de Interés:</strong> {{post?.deportes_interes}}
+                                                <hr>
+                                                <strong>Email:</strong> {{post?.email}}
+
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="h7 text-muted">{{post?.continente}}</div>
+                                <div class="edit mt-2">
+                                    <button type="button" class="btn btn-info"
+                                        (click)="borrarPost(post.id, post.usuario_id)">Eliminar</button>
+                                    <div class="custom-file mt-3">
+                                        <input type="file" class="custom-file-input" name="image"
+                                            (change)="onFileChanged($event,post.id, post.usuario_id)">
+                                        <label class="custom-file-label" for="customFile">Sube una imagen</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>
+                        {{post?.fecha | date:"dd/MM/yy"}}</div>
+                    <h5 class="card-title">{{post?.titulo}}</h5>
+                    <p class="card-text">
+                        {{post?.parrafo}}
+                    </p>
+                    <div class="card-img" *ngIf="post.imagenes != ''">
+                        <img [src]="'http://localhost:9000/'+ post.imagenes" width="50%" height="50%">
+                    </div>
+                    <div class="card-footer">
+                        <a [routerLink]="['/posts']" class="card-link meGusta" (click)="meGusta(post.id)"><i
+                                class="fa fa-gittip"></i>{{post?.me_gusta}} Me
+                            gusta</a>
+                    </div>
+                    <div class="comentarios">
+                        <form novalidate [formGroup]="formulario2" (ngSubmit)="recogerDatosCom(post.id)">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" placeholder="Escribe un comentario" name="texto"
+                                    class="form-control" formControlName="texto"></textarea>
+                            </div>
+                            <div class="btn-group">
+                                <input type="submit" class="btn btn-secondary" value="Comentar">
+                            </div>
+                            <hr>
+                        </form>
+                        <div class="comentarios mt-3" *ngFor="let com of post.comentarios">
+                            <h6>{{com.username}}</h6>
+                            <p class="card-text">
+                                {{com.texto}}
+                            </p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="text-muted mt-3 navbar-dark bg-dark footer ">
+    <div class=" container">
+        <p class="float-right mt-3">
+            <a href="#">Volver al principio</a>
+        </p>
+        <div id="footer-bottom">
+            ©&nbsp;2020&nbsp;<a href="/" rel="nofollow">TinTravel</a>, todos los
+            derechos reservados. <br>
+            <a href="/html_172-agencias_de_viaje.aspx">Agencias de Viaje</a> - <a
+                href="/html_50-terminos_y_condiciones.aspx">Terminos y Condiciones</a> - <a
+                href="/html_49-politica_de_privacidad.aspx">Política de Privacidad</a> |
+            <div id="scroll-top-top"><a href="#"></a></div>
+        </div>
+    </div>
+</footer>

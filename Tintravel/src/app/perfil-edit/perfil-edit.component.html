@@ -1,0 +1,150 @@
+<div class="contacto">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-4">
+                <h3>Editar Perfil</h3>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form novalidate [formGroup]="formulario" (ngSubmit)="recogerDatos()">
+                    <div class="form-row">
+                        <h5>Información</h5>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-12 col-md-6">
+                            <label>Nombre</label>
+                            <input type="text" name="nombre" class="form-control" formControlName="nombre">
+                            <p class="error"
+                                *ngIf="formulario.controls.nombre.errors?.required && formulario.controls.nombre.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                            <label>Apellidos</label>
+                            <input type="text" name="apellidos" class="form-control" formControlName="apellidos">
+                            <p class="error"
+                                *ngIf="formulario.controls.apellidos.errors?.required && formulario.controls.apellidos.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                    </div>
+                    <div class=" form-row">
+                        <div class="form-group col-12 col-md-6">
+                            <label>Nombre de Usuario</label>
+                            <input type="text" name="userName" class="form-control" formControlName="userName">
+                            <p class="error"
+                                *ngIf="formulario.controls.userName.errors?.required && formulario.controls.userName.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                            <label>Contraseña</label>
+                            <input type="password" name="password" class="form-control" formControlName="password">
+                        </div>
+                    </div>
+                    <div class="form-row ">
+                        <div class="form-group col-6">
+                            <label>Email</label>
+                            <input type="text" name="email" class="form-control" formControlName="email">
+                            <p class="error"
+                                *ngIf="formulario.controls.email.errors?.required && formulario.controls.email.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                        <div class="form-group col-6">
+                            <label>Frase de Perfil</label>
+                            <input type="text" name="fperfil" class="form-control" formControlName="fperfil">
+                            <p class="error"
+                                *ngIf="formulario.controls.fperfil.errors?.required && formulario.controls.fperfil.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row mt-3">
+                        <h5>Viajes</h5>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <label>Paises Visitados</label>
+                            <input type="text" name="pvisitados" class="form-control" formControlName="pvisitados">
+                            <p class="error"
+                                *ngIf="formulario.controls.pvisitados.errors?.required && formulario.controls.pvisitados.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <label>Proximos Viajes</label>
+                            <input type="text" name="pviajes" class="form-control" formControlName="pviajes">
+                            <p class="error"
+                                *ngIf="formulario.controls.pviajes.errors?.required && formulario.controls.pviajes.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <label>Idiomas</label>
+                            <input type="text" name="idiomas" class="form-control" formControlName="idiomas">
+                            <p class="error"
+                                *ngIf="formulario.controls.idiomas.errors?.required && formulario.controls.idiomas.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                    </div>
+
+                    <div class="form-row mt-3">
+                        <h5>Deportes</h5>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <label>Deportes que practico </label>
+                            <input type="text" name="dpractico" class="form-control" formControlName="dpractico">
+                            <p class="error"
+                                *ngIf="formulario.controls.dpractico.errors?.required && formulario.controls.dpractico.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-12">
+                            <label>Deportes de Interés </label>
+                            <input type="text" name="dInteres" class="form-control" formControlName="dInteres">
+                            <p class="error"
+                                *ngIf="formulario.controls.dInteres.errors?.required && formulario.controls.dInteres.touched">
+                                El campo no puede estar vacio</p>
+                        </div>
+                    </div>
+                    <br>
+
+
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck" name="checkbox"
+                                formControlName="checkbox">
+                            <label class="form-check-label" for="gridCheck">
+                                Acepto los terminos y condiciones
+                            </label>
+                        </div>
+                    </div>
+
+                    <input [disabled]="!formulario.valid" type="submit" class="btn btn-secondary" value="Enviar">
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <footer class="text-muted mt-3 navbar-dark bg-dark footer ">
+        <div class=" container">
+            <p class="float-right mt-3">
+                <a href="#">Volver al principio</a>
+            </p>
+            <div id="footer-bottom">
+                ©&nbsp;2020&nbsp;<a href="/" rel="nofollow">TinTravel</a>, todos los
+                derechos reservados. <br>
+                <a href="/html_172-agencias_de_viaje.aspx">Agencias de Viaje</a> - <a
+                    href="/html_50-terminos_y_condiciones.aspx">Terminos y Condiciones</a> - <a
+                    href="/html_49-politica_de_privacidad.aspx">Política de Privacidad</a> |
+                <div id="scroll-top-top"><a href="#"></a></div>
+            </div>
+        </div>
+    </footer>
